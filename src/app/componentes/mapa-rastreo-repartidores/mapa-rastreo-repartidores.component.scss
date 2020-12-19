@@ -1,0 +1,34 @@
+
+
+
+.container {
+  padding-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+#mapa {
+  width: 100%;
+  height: 450px;
+}
+
+#dejar-seguir {
+  /*position: fixed;
+  z-index: 20;*/
+  display: block;
+  position: relative;
+  //margin: 0px auto;
+  width: 50%;
+  height: 40px;
+  padding: 10px;
+  border: none;
+  border-radius: 3px;
+  font-size: 12px;
+  text-align: center;
+}
+#menu {
+  position: absolute;
+  background: #fff;
+  padding: 10px;
+  font-family: 'Open Sans', sans-serif;
+}

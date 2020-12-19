@@ -1,0 +1,160 @@
+
+
+<div class="btn-back" *ngIf="ordenController.showSeguimientoOrden" >
+  <button mat-icon-button (click)="ordenController.showSeguimientoOrden = false"
+  matTooltip="Atras" matTooltipPosition="right">
+      <mat-icon class="mat-18">arrow_back</mat-icon>
+  </button>
+</div>
+
+<div class="ver-mapa" *ngIf="ordenSeleccionada.estado == 'En Camino' && !ordenController.showSeguimientoOrden">
+  <div class="btn-ver-mapa">
+    <button mat-raised-button (click)="ordenController.showSeguimientoOrden = true">
+      Seguimiento del Repartidor
+    </button>
+  </div>
+</div>
+
+<div class="container mat-elevation-z18" *ngIf="!ordenController.showSeguimientoOrden && !cargando" >
+
+  <div class="img-orden" [ngStyle]="imageStyle"></div>
+
+
+  <!--DATOS ORDEN-->
+  <div class="datos-orden" id="subtitulo">
+    <b>Datos de la Orden</b>
+  </div>
+
+  <!--ID ORDEN-->
+  <div class="id-orden" id="datos">
+    <p>Orden ID</p>
+  </div>
+  <div class="id-orden-valor" id="datos-valor">
+    <p>{{ordenSeleccionada.id_orden}}</p>
+  </div>
+
+  <!--PEDIDOS-->
+  <div class="pedidos" id="datos">
+    <p>Pedidos</p>
+  </div>
+  <div class="pedidos-valor" id="datos-valor">
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let menu of ordenSeleccionada.menus">
+        <div class="item">
+          {{menu.nombre}} <span class="badge badge-dark">{{menu.cantidad}}x</span>
+        </div>
+      </li>
+      <li class="list-group-item" *ngFor="let promo of ordenSeleccionada.promociones">
+        <div class="item">
+          {{promo.titulo}} <span class="badge badge-dark">{{promo.cantidad}}x</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <!--ESTADO-->
+  <div class="estado" id="datos">
+    <p>Estado</p>
+  </div>
+  <div class="estado-valor" id="datos-valor">
+    <p *ngIf="ordenSeleccionada.estado == 'En Proceso'" [ngStyle]="{'color': ordenSeleccionada.estado == 'En Proceso' ? 'var(--secundario)': 'black'}">{{ordenSeleccionada.estado}}</p>
+    <p *ngIf="ordenSeleccionada.estado == 'Asignado'">{{ordenSeleccionada.estado}}</p>
+    <p *ngIf="ordenSeleccionada.estado == 'Entregado'" [ngStyle]="{'color': ordenSeleccionada.estado == 'Entregado' ? 'green': 'black'}">{{ordenSeleccionada.estado}}</p>
+    <p *ngIf="ordenSeleccionada.estado == 'No Entregado'" [ngStyle]="{'color': ordenSeleccionada.estado == 'No Entregado' ? 'red': 'black'}">{{ordenSeleccionada.estado}}</p>
+    <p *ngIf="ordenSeleccionada.estado == 'En Camino'">{{ordenSeleccionada.estado}}</p>
+  </div>
+
+
+  <!--TOTAL-->
+  <div class="total" id="datos">
+    <p>Total</p>
+  </div>
+  <div class="total-valor" id="datos-valor">
+    <b>${{ordenSeleccionada.total.toFixed(2)}}</b>
+  </div>
+
+  <!--FECHA-->
+  <div class="fecha" id="datos">
+    <p>Fecha</p>
+  </div>
+  <div class="fecha-valor" id="datos-valor">
+    <!--<p>{{ordenSeleccionada.fecha | date}} {{ Tiempo12H(ordenSeleccionada.fecha.split(' ')[1].split(':')[0], ordenSeleccionada.fecha.split(' ')[1].split(':')[1]) }}</p>-->
+    <!--<p>{{ordenSeleccionada.fecha | date}} {{ ordenSeleccionada.fecha.split(' ')[1] }}</p>-->
+    <p>{{ordenSeleccionada.fecha}}</p>
+  </div>
+
+
+
+
+
+  <!--DATOS CLIENTE-->
+  <div class="datos-cliente" id="subtitulo">
+    <b>Datos del Cliente</b>
+  </div>
+
+  <!--NOMBRE-->
+  <div class="nombre" id="datos">
+    <p>Nombre</p>
+  </div>
+  <div class="nombre-valor" id="datos-valor">
+    <p>{{cliente?.nombre}}</p>
+  </div>
+
+  <!--DIRECCION-->
+  <div class="direccion" id="datos">
+    <p>Direccion</p>
+  </div>
+  <div class="direccion-valor" id="datos-valor">
+    <p>{{direccionActual?.direccion}}</p>
+  </div>
+
+  <!--TELEFONO-->
+  <div class="telefono" id="datos">
+    <p>Telefono</p>
+  </div>
+  <div class="telefono-valor" id="datos-valor">
+    <p>{{cliente?.telefono}}</p>
+  </div>
+
+
+
+
+
+  <!--DATOS REPARTIDOR-->
+  <div class="datos-repartidor" id="subtitulo">
+    <b>Datos del Repartidor</b>
+  </div>
+
+  <!--NOMBRE REPARTIDOR-->
+  <div class="nombre-repartidor" id="datos" *ngIf="repartidor" >
+    <p>Nombre</p>
+  </div>
+  <div class="nombre-repartidor-valor" id="datos-valor" *ngIf="repartidor" >
+    <p>{{repartidor?.nombre}}</p>
+  </div>
+
+  <!--TELEFONO REPARTIDOR-->
+  <div class="telefono-repartidor" id="datos" *ngIf="repartidor" >
+    <p>Telefono</p>
+  </div>
+  <div class="telefono-repartidor-valor" id="datos-valor" *ngIf="repartidor" >
+    <p>{{repartidor?.telefono}}</p>
+  </div>
+
+  <!--BTN ASIGNAR REPARTIDOR-->
+  <div class="asignar-repartidor" *ngIf="!repartidor">
+    <button mat-raised-button (click)="recursos.asignarRepartidorModal(ordenSeleccionada, cliente)" class="secundario" >Terminar Orden</button>
+  </div>
+
+</div>
+
+
+<div class="cargando" *ngIf="cargando">
+  <img src="../assets/loading_cipitio.gif" alt="">
+</div>
+
+<div class="seguimiento-orden" *ngIf="ordenController.showSeguimientoOrden && ordenSeleccionada">
+  <app-seguimiento-orden-repartidor [orden]="ordenSeleccionada"></app-seguimiento-orden-repartidor>
+</div>
+
+

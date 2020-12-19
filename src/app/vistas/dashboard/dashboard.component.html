@@ -1,0 +1,122 @@
+
+
+
+<div class="container">
+
+
+  <div id="titulo">
+    <h2>Datos de Ordenes</h2>
+  </div>
+
+  <div class="ordenes">
+
+
+    <!--EN CAMINO-->
+    <div class="orden-encamino mat-elevation-z10" id="orden">
+      <div class="orden-icono" [ngStyle]="{'background-color' : 'gray'}" id="center">
+        <mat-icon class="mat-18">directions_bike</mat-icon>
+      </div>
+
+      <div class="orden-nombre" id="center">
+        <p>En Camino</p>
+      </div>
+
+      <div class="orden-cantidad" id="center">
+        <p>{{ordenesEnCamino?.length}}</p>
+      </div>
+    </div>
+
+
+    <!--EN PROCESO-->
+    <div class="orden-enproceso mat-elevation-z10" id="orden">
+      <div class="orden-icono" [ngStyle]="{'background-color' : 'var(--secundario)'}" id="center">
+        <mat-icon class="mat-18">schedule</mat-icon>
+      </div>
+
+      <div class="orden-nombre" id="center">
+        <p>En Proceso</p>
+      </div>
+
+      <div class="orden-cantidad" id="center">
+        <p>{{ordenesEnProceso?.length}}</p>
+      </div>
+    </div>
+
+
+
+    <!--ENTREGADO-->
+    <div class="orden-entregado mat-elevation-z10" id="orden">
+      <div class="orden-icono" [ngStyle]="{'background-color' : 'green'}" id="center">
+        <mat-icon class="mat-18">done_outline</mat-icon>
+      </div>
+
+      <div class="orden-nombre" id="center">
+        <p>Entregado</p>
+      </div>
+
+      <div class="orden-cantidad" id="center">
+        <p>{{ordenesEntregadas?.length}}</p>
+      </div>
+    </div>
+
+
+
+
+
+
+  </div>
+
+
+  <div id="titulo">
+    <h2>Estadísticas</h2>
+  </div>
+
+
+  <div class="estadisticas mat-elevation-z5">
+    <app-grafica-ordenes></app-grafica-ordenes>
+  </div>
+
+  <div class="datos-estadisticas-ordenes">
+
+    <!--ORDEN MAS PEDIDA-->
+    <div class="orden-mas-pedida mat-elevation-z5">
+      <div class="titulo">
+        <p>
+          <mat-icon>adjust</mat-icon>
+          Comida Más Ordenada
+        </p>
+      </div>
+      <div class="img-comida">
+        <img src="https://d1ralsognjng37.cloudfront.net/939dd856-2cbe-4226-9246-b790337190d9.jpeg" alt="">
+      </div>
+      <div class="nombre-comida" id="center">
+        <p>Menu Combo 1</p>
+      </div>
+      <div class="cantidad-veces" id="center">
+        <b>10</b>
+      </div>
+      <div class="pedidos" id="center">
+        <p>Ordenes</p>
+      </div>
+    </div>
+
+    <!--TOTAL ORDENES-->
+    <div class="total-ordenes mat-elevation-z5" id="orden">
+      <div class="orden-icono" [ngStyle]="{'background-color' : 'var(--primario)'}" id="center">
+        <mat-icon class="mat-18">fastfood</mat-icon>
+      </div>
+
+      <div class="orden-nombre" id="center">
+        <p>TOTAL ORDENES</p>
+      </div>
+
+      <div class="orden-cantidad" id="center">
+        <p>{{ordenes?.length}}</p>
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+

@@ -1,0 +1,224 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+
+
+
+//CSS GRID
+
+.ver-mapa {
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+.btn-ver-mapa {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+.container {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: minmax(auto, 40%) minmax(auto, 20%) minmax(auto, 40%);
+  //grid-template-rows: repeat(13, minmax(auto, 100px));
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+}
+.img-orden {
+  grid-column: 1 / 2;
+  grid-row: 1 / 12;
+}
+.datos-orden {
+  grid-column: 2 / -1;
+  grid-row: 1 / 2;
+}
+////////////////  ID ORDEN
+.id-orden {
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+.id-orden-valor {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+}
+////////////////  PEDIDOS
+.pedidos {
+  grid-column: 2 / 3;
+  grid-row: 3 / 4;
+}
+.pedidos-valor {
+  grid-column: 3 / 4;
+  grid-row: 3 / 4;
+}
+////////////////  ESTADO
+.estado {
+  grid-column: 2 / 3;
+  grid-row: 4 / 5;
+}
+.estado-valor {
+  grid-column: 3 / 4;
+  grid-row: 4 / 5;
+}
+////////////////  TOTAL
+.total {
+  grid-column: 2 / 3;
+  grid-row: 5 / 6;
+}
+.total-valor {
+  grid-column: 3 / 4;
+  grid-row: 5 / 6;
+}
+////////////////  FECHA
+.fecha {
+  grid-column: 2 / 3;
+  grid-row: 6 / 7;
+}
+.fecha-valor {
+  grid-column: 3 / 4;
+  grid-row: 6 / 7;
+}
+
+
+
+////////// DATOS CLIENTE
+.datos-cliente {
+  grid-column: 2 / -1;
+  grid-row: 7 / 8;
+}
+//////////////// NOMBRE
+.nombre {
+  grid-column: 2 / 3;
+  grid-row: 8 / 9;
+}
+.nombre-valor {
+  grid-column: 3 / 4;
+  grid-row: 8 / 9;
+}
+//////////////// DIRECCION
+.direccion {
+  grid-column: 2 / 3;
+  grid-row: 9 / 10;
+}
+.direccion-valor {
+  grid-column: 3 / 4;
+  grid-row: 9 / 10;
+}
+//////////////// TELEFONO
+.telefono {
+  grid-column: 2 / 3;
+  grid-row: 10 / 11;
+}
+.telefono-valor {
+  grid-column: 3 / 4;
+  grid-row: 10 / 11;
+}
+
+
+
+
+
+////////// DATOS REPARTIDOR
+.datos-repartidor {
+  grid-column: 2 / -1;
+  grid-row: 11 / 12;
+}
+//////////////// NOMBRE
+.nombre-repartidor {
+  grid-column: 2 / 3;
+  grid-row: 12 / 13;
+}
+.nombre-repartidor-valor {
+  grid-column: 3 / 4;
+  grid-row: 12 / 13;
+}
+//////////////// TELEFONO
+.telefono-repartidor {
+  grid-column: 2 / 3;
+  grid-row: 13 / 14;
+}
+.telefono-repartidor-valor {
+  grid-column: 3 / 4;
+  grid-row: 13 / 14;
+}
+
+/////////ASIGNAR REPARTIDOR
+.asignar-repartidor {
+  grid-column: 2 / 4;
+}
+
+
+
+
+
+
+// ESTILOS
+
+.container {
+  width: 90%;
+  height: 550px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding-top: 5px;
+}
+.ver-mapa {
+  margin-bottom: 30px;
+}
+.btn-ver-mapa {
+  //margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    background-color: var(--primario);
+    color: white;
+  }
+}
+.asignar-repartidor {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/*.img-orden {
+  color: #ffffff;
+  background-image: linear-gradient(rgba(36, 38, 53, 0.513), rgba(36, 38, 53, 0.513)), url('https://d1ralsognjng37.cloudfront.net/939dd856-2cbe-4226-9246-b790337190d9.jpeg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 95%;
+}*/
+#subtitulo {
+  border-radius: 5px;
+  background-color: gray;
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+#datos {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: gray;
+  font-style: italic;
+  font-size: 14px;
+}
+#datos-valor {
+  font-family: 'Montserrat', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+}
+
+.btn-back {
+  button {
+    color: white !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+}

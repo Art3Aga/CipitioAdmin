@@ -1,0 +1,45 @@
+<div class="container1">
+
+    <div class="container formulario">
+
+      <!--<div class="titulo"><h1>Panes El Cipitio</h1></div>-->
+      <div class="titulo">
+        <h1>El Cipitio Admin</h1>
+      </div>
+
+      <div class="icono">
+        <img src="../assets/cipitio_icon.jpg" alt="Icono">
+        <!--<img src="../assets/papipollo.png" alt="Icono">-->
+      </div>
+
+      <div class="nombre-input" id="inputs">
+        <mat-form-field>
+          <mat-label>Nombre</mat-label>
+          <input [formControl]="nombre" matInput placeholder="Nombre">
+          <mat-error *ngIf="nombre.hasError('required')">Nombre Requerido</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="clave-input" id="inputs">
+        <mat-form-field>
+          <mat-label>Clave</mat-label>
+          <input [formControl]="clave" [type]="hide ? 'password' : 'text'" matInput placeholder="Clave">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+          <mat-error *ngIf="clave.hasError('required')">Clave Requerida</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="btn-login-div">
+        <button class="btn-login" (click)="login()">Iniciar Sesion</button>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="cargando" *ngIf="usuarioController.cargando" >
+    <img src="../assets/loading_cipitio.gif" alt="">
+  </div>

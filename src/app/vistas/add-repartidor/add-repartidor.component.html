@@ -1,0 +1,79 @@
+
+<button mat-icon-button id="back" (click)="atras()"
+matTooltip="Atras" matTooltipPosition="below">
+<mat-icon class="mat-18">close</mat-icon>
+</button>
+
+<div class="container">
+
+<div class="titulo" id="center">
+<h2>Nuevo Repartidor</h2>
+</div>
+
+
+<div class="nombre-p" id="center">
+<p>Nombre:</p>
+</div>
+
+<div class="telefono-p" id="center">
+<p>Telefono:</p>
+</div>
+
+<div class="clave-p" id="center">
+<p>Clave:</p>
+</div>
+
+<div class="color-p" id="center">
+<p>Color:</p>
+</div>
+
+<!--NOMBRE-->
+<div class="nombre" id="center">
+<mat-form-field appearance="outline">
+<mat-label>Nombre</mat-label>
+<input [formControl]="nombre" matInput placeholder="Nombre">
+<mat-error *ngIf="nombre.hasError('required')">Nombre Requerido</mat-error>
+<mat-icon matSuffix>person</mat-icon>
+<mat-hint>{{nombre.value}}</mat-hint>
+</mat-form-field>
+</div>
+
+<!--TELEFONO-->
+<div class="telefono" id="center">
+<mat-form-field appearance="outline">
+<mat-label>Telefono</mat-label>
+<input [formControl]="telefono" type="tel" matInput placeholder="Telefono">
+<mat-error *ngIf="telefono.hasError('required')">Telefono Requerido</mat-error>
+<mat-icon matSuffix>phone_iphone</mat-icon>
+<mat-hint>{{telefono.value}}</mat-hint>
+</mat-form-field>
+</div>
+
+
+<!--CLAVE-->
+<div class="clave" id="center">
+<mat-form-field appearance="outline">
+<mat-label>Clave Cuenta del Repartidor</mat-label>
+<input [formControl]="clave" matInput placeholder="Clave" [type]="hide ? 'password' : 'text'">
+<button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+<mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+</button>
+<mat-error *ngIf="clave.hasError('required')">Clave Requerida</mat-error>
+</mat-form-field>
+</div>
+
+<!--COLOR-->
+<div class="color" id="center">
+<div class="color-aleatorio" [style]="{'background-color' : color}"></div>
+</div>
+
+<div class="btn-registrar" id="center">
+<button mat-raised-button (click)="GuardarRepartidor()">Registrar Repartidor</button>
+</div>
+
+</div>
+
+
+<div class="cargando" *ngIf="usuarioController.cargando" >
+<img src="../assets/loading_cipitio.gif" alt="">
+</div>

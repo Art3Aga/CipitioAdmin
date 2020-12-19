@@ -1,0 +1,160 @@
+
+<div class="btn-back" *ngIf="ordenController.showOrdenDetalle && !ordenController.showSeguimientoOrden" >
+  <button mat-icon-button (click)="ordenController.showOrdenDetalle = false"
+  matTooltip="Atras" matTooltipPosition="right">
+      <mat-icon class="mat-18">arrow_back</mat-icon>
+  </button>
+</div>
+
+<div class="container" *ngIf="!ordenController.showOrdenDetalle && !cargando" >
+
+
+  <div class="opciones-busqueda">
+
+    <!--<div class="input-busqueda">
+      <mat-form-field appearance="outline">
+        <mat-label>Buscar Orden</mat-label>
+        <input matInput (keyup)="buscarOrden($event)" placeholder="Ej: Panes Combo 1" #input>
+        <mat-icon matSuffix>search</mat-icon>
+      </mat-form-field>
+    </div>-->
+
+    <!--<div class="filtro-busqueda">
+      <mat-form-field appearance="outline">
+        <mat-label>Filtrar por Estado</mat-label>
+        <mat-select #estado>
+          <mat-option value="proceso">Todos</mat-option>
+          <mat-option value="proceso">En Proceso</mat-option>
+          <mat-option value="camino">En Camino</mat-option>
+          <mat-option value="entregado">Entregado</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>-->
+
+  </div>
+
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">schedule</mat-icon>
+        En Proceso
+      </ng-template>
+      <div class="ordenes" *ngIf="ordenesEnProceso.length > 0; else noenproceso">
+        <app-orden *ngFor="let orden of ordenesEnProceso"  [orden]="orden"></app-orden>
+      </div>
+      <ng-template #noenproceso>
+        <h1>No hay Ordenes En Proceso!</h1>
+      </ng-template>
+    </mat-tab>
+
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">compare_arrows</mat-icon>
+        Asignadas
+      </ng-template>
+      <div class="ordenes" *ngIf="ordenesAsignadas.length > 0; else noasignadas">
+        <app-orden *ngFor="let orden of ordenesAsignadas" [orden]="orden"></app-orden>
+      </div>
+      <ng-template #noasignadas>
+        <h1>No hay Ordenes Asignadas!</h1>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">directions_bike</mat-icon>
+        En Camino
+      </ng-template>
+      <div class="ordenes" *ngIf="ordenesEnCamino.length > 0; else noencamino">
+        <app-orden *ngFor="let orden of ordenesEnCamino" [orden]="orden"></app-orden>
+      </div>
+      <ng-template #noencamino>
+        <h1>No hay Ordenes En Camino!</h1>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">done_outline</mat-icon>
+        Entregado
+      </ng-template>
+
+      <div class="ordenes" *ngIf="ordenesEntregadas.length > 0; else noentregadas">
+        <app-orden *ngFor="let orden of ordenesEntregadas"  [orden]="orden"></app-orden>
+      </div>
+      <ng-template #noentregadas>
+        <h1>No hay Ordenes Entregadas!</h1>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">error</mat-icon>
+        No Entregado
+      </ng-template>
+
+      <div class="ordenes" *ngIf="ordenesNoEntregadas.length > 0; else nodata">
+        <app-orden *ngFor="let orden of ordenesNoEntregadas"  [orden]="orden"></app-orden>
+      </div>
+      <ng-template #nodata>
+        <h1>No hay Ordenes No Entregadas!</h1>
+      </ng-template>
+
+    </mat-tab>
+
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon class="example-tab-icon">search</mat-icon>
+        Buscar
+      </ng-template>
+
+
+      <div class="container buscador">
+
+        <div class="input-busqueda">
+          <mat-form-field appearance="outline">
+            <mat-label>Buscar Orden</mat-label>
+            <input matInput placeholder="ID de la Orden: " #input [(ngModel)]="buscador">
+            <mat-icon matSuffix>search</mat-icon>
+          </mat-form-field>
+          <button mat-raised-button class="secundario" (click)="buscarOrden()">Buscar</button>
+          <br>
+          <button *ngIf="buscador != '' || filtroOrdenes.length <= 0" (click)="limpiarBusqueda()" mat-raised-button>Limpiar Busqueda</button>
+        </div>
+
+        <div class="resultados-busqueda">
+          <div class="ordenes-resultado" *ngIf="filtroOrdenes.length > 0; else nosearchdata">
+            <app-orden *ngFor="let orden of filtroOrdenes" [orden]="orden"></app-orden>
+          </div>
+          <ng-template #nosearchdata>
+            <h3>No hay resultados de su busqueda!</h3>
+          </ng-template>
+        </div>
+
+      </div>
+
+    </mat-tab>
+
+  </mat-tab-group>
+
+
+
+
+  <!--<div class="ordenes">
+    <app-orden *ngFor="let orden of ordenes"  [orden]="orden"></app-orden>
+  </div>-->
+
+
+
+</div>
+
+<div class="orden-detalle" *ngIf="ordenController.showOrdenDetalle" >
+  <app-ordene-detalle [ordenSeleccionada]="ordenController?.ordenSeleccionada"></app-ordene-detalle>
+</div>
+
+<div class="cargando" *ngIf="cargando">
+  <img src="../assets/loading_cipitio.gif" alt="">
+</div>
+

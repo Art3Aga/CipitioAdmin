@@ -1,0 +1,58 @@
+
+
+
+
+<div class="container mat-elevation-z3" (click)="mostrarOrdenDetalle()" *ngIf="!cargando"  >
+
+  <div class="orden">
+
+    <div class="estado-img" id="center">
+      <mat-icon *ngIf="orden.estado == 'En Proceso'" [ngStyle]="{'color': orden.estado == 'En Proceso' ? 'var(--secundario)': 'black'}">schedule</mat-icon>
+      <mat-icon *ngIf="orden.estado == 'Asignado'" [ngStyle]="{'color': orden.estado == 'Asignado' ? 'var(--secundario)': 'black'}">compare_arrows</mat-icon>
+      <mat-icon *ngIf="orden.estado == 'En Camino'">directions_bike</mat-icon>
+      <mat-icon *ngIf="orden.estado == 'Entregado'" [ngStyle]="{'color': orden.estado == 'Entregado' ? 'green': 'black'}">done_outline</mat-icon>
+      <mat-icon *ngIf="orden.estado == 'No Entregado'" [ngStyle]="{'color': orden.estado == 'No Entregado' ? 'red': 'black'}">error</mat-icon>
+    </div>
+
+    <div class="division" id="center"></div>
+
+    <div class="estado-nombre" id="center">
+      <p>{{orden.estado}}</p>
+    </div>
+
+    <div class="id-orden" id="center">
+      <b># {{orden.id_orden}}</b>
+    </div>
+
+    <div class="orden-descripcion" id="center">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let menu of orden.menus; let i = index;">
+          <div class="item">
+            {{ i + 1 }}-{{menu.nombre}} <span class="badge badge-dark">{{menu.cantidad}}x</span>
+          </div>
+        </li>
+        <li class="list-group-item" *ngFor="let promo of orden.promociones; let i = index;">
+          <div class="item">
+            {{ (i + orden.menus?.length) + 1 }}-{{promo.titulo}} <span class="badge badge-dark">{{promo.cantidad}}x</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="total" id="center">
+      <b>${{orden.total.toFixed(2)}}</b>
+    </div>
+
+    <div class="fecha" id="center">
+      <!--<p>{{orden.fecha | date}} {{ Tiempo12H(orden.fecha.split(' ')[1].split(':')[0], orden.fecha.split(' ')[1].split(':')[1]) }}</p>-->
+      <p>{{orden.fecha}}</p>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="cargando" *ngIf="cargando">
+  <img src="../assets/loading_cipitio.gif" alt="">
+</div>
+

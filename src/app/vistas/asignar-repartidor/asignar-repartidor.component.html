@@ -1,0 +1,36 @@
+<header class="header">
+  <div class="btn-back">
+    <button mat-icon-button (click)="dialogRef.close()" matTooltip="Cerrar" matTooltipPosition="below">
+      <mat-icon class="mat-18">clear</mat-icon>
+    </button>
+  </div>
+
+  <div class="titulo text-center">
+    <h4>¿Cúal repartidor entregará la orden a: "{{data.cliente.nombre}}"?</h4>
+  </div>
+</header>
+
+<div class="container">
+
+  <br>
+
+  <div class="list-group">
+    <button *ngFor="let repartidor of repartidores; let i = index;"
+      type="button" class="list-group-item list-group-item-action" (click)="seleccionarRepartidor(repartidor, i)"
+      [ngClass]="{'active': i === indexRepartidor}">
+      {{repartidor.nombre}}
+    </button>
+  </div>
+
+  <div class="fab-btn">
+    <button mat-raised-button *ngIf="repartidorSeleccionado" class="secundario" (click)="asignarRepartidor()">
+      Asignar a {{repartidorSeleccionado.nombre.split(' ')[0]}}
+    </button>
+  </div>
+
+</div>
+
+<div class="cargando" *ngIf="cargando">
+  <img src="../assets/loading_cipitio.gif" alt="">
+</div>
+

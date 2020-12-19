@@ -1,0 +1,84 @@
+
+
+//CSS GRID
+.opciones {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 1fr;
+}
+.input-busqueda {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.btn-mapa-repartidores {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+.btn-add {
+  grid-column: 3 / 4;
+  grid-row: 1 / 2;
+}
+
+
+
+.example-tab-icon {
+  margin-right: 8px;
+}
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+td, th {
+  width: 25%;
+}
+.input-busqueda > * {
+  width: 270px;
+}
+.container {
+  margin-top: 20px;
+  opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .5s;
+}
+.btn-add, .btn-mapa-repartidores, .input-busqueda {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    background: var(--primario) !important;
+    color: white !important;
+  }
+}
+
+.btn-back {
+  button {
+    color: white !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+}
+
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.55em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+
+//KEYFRAMES
+@keyframes fadeInOpacity {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

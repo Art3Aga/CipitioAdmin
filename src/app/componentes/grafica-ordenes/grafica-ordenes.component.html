@@ -1,0 +1,9 @@
+<div class="chart-ordenes" *ngIf="ordenes.length > 0" >
+  <canvas baseChart [datasets]="barChartData" [options]="barChartOptions"
+    [legend]="barChartLegend" [chartType]="barChartType">
+  </canvas>
+</div>
+
+<div class="nodata" *ngIf="ordenes.length <= 0" >
+  <h1>No hay Estadísticas!</h1>
+</div>

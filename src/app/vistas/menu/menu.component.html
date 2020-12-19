@@ -1,0 +1,68 @@
+<mat-sidenav-container fullscreen *ngIf="isLoggedIn">
+  <mat-sidenav  #sidenav mode="side" id="navbar-high" class="app-sidenav" opened> <!--opened [opened]="true"-->
+    <mat-toolbar id="menu-toolbar"  class="toolbar" color="primary">
+    <span class="toolbar-filler text-center">Albery Arteaga<hr></span>
+      <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button">
+        <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item (click)="getTitulo('Dashboard', sidenav)" class="sidenav-link" [routerLink]="['/home/dashboard']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        matTooltip="Acciones y Opciones Principales" matTooltipPosition="right">
+        <mat-icon mat-list-icon>dashboard</mat-icon>
+        <span class="title" mat-line>Dashboard</span>
+      </a>
+      <a mat-list-item (click)="getTitulo('Menus y Bebidas', sidenav)" class="sidenav-link" [routerLink]="['/home/menus_bebidas']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        matTooltip="Agregar, Modificar, Eliminar Menus y Bebidas" matTooltipPosition="right">
+        <mat-icon mat-list-icon>fastfood</mat-icon>
+        <span class="title" mat-line>Menus y Bebidas</span>
+      </a>
+      <a mat-list-item (click)="getTitulo('Ordenes', sidenav)" class="sidenav-link" [routerLink]="['/home/ordenes']" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: true}"
+        matTooltip="Seguimiento del estado de las Ordenes" matTooltipPosition="right">
+        <mat-icon mat-list-icon>local_bar</mat-icon>
+        <span class="title" mat-line>Ordenes</span>
+      </a>
+      <a mat-list-item  class="sidenav-link" [matMenuTriggerFor]="menu"
+          matTooltip="Administrar Cuentas de los Clientes, Cocineros y Repartidores" matTooltipPosition="right">
+        <mat-icon mat-list-icon>people</mat-icon>
+        <span class="title" mat-line>Usuarios</span>
+        <mat-menu #menu="matMenu" xPosition="after">
+          <button mat-menu-item [routerLink]="['/home/clientes']" routerLinkActive="active"
+              (click)="getTitulo('Usuarios > Clientes', sidenav)">
+            <mat-icon>contacts</mat-icon>
+            <span>Clientes</span>
+          </button>
+          <button mat-menu-item [routerLink]="['/home/repartidores']" routerLinkActive="active"
+              (click)="getTitulo('Usuarios > Repartidores', sidenav)">
+            <mat-icon>directions_bike</mat-icon>
+            <span>Repartidores</span>
+          </button>
+          <button mat-menu-item [routerLink]="['/home/cocineros']" routerLinkActive="active"
+              (click)="getTitulo('Usuarios > Cocineros', sidenav)">
+            <mat-icon>restaurant</mat-icon>
+            <span>Cocineros</span>
+          </button>
+        </mat-menu>
+      </a>
+      <a mat-list-item class="sidenav-link"
+          matTooltip="Cerrar Sesion" matTooltipPosition="right"
+          (click)="salir()">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <span class="title" mat-line>Salir</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!--[ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}"-->
+  <mat-toolbar id="appToolbar"  color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
+      <mat-icon aria-label="Menu" class="material-icons" id="menuicon">menu</mat-icon>
+    </button>
+    <h1 class="component-title">
+      <a class="title-link">{{title}}</a>
+    </h1>
+  </mat-toolbar>
+  <router-outlet></router-outlet>
+</mat-sidenav-container>

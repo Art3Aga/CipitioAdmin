@@ -1,0 +1,103 @@
+
+
+// CSS GRID
+
+
+.opciones-busqueda {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+}
+.ordenes {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: minmax(auto, 250px);
+  grid-auto-rows: minmax(auto, 250px);
+  grid-gap: 15px;
+  margin: 10px;
+  padding: 10px;
+  overflow-x: hidden !important;
+}
+
+.buscador {
+  display: grid;
+  grid-template-columns: minmax(auto, 40%) minmax(auto, 60%);
+  grid-auto-rows: auto;
+  grid-gap: 10px;
+}
+
+
+//Buscador
+.input-busqueda {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
+.resultados-busqueda {
+  grid-column: 2 / 3;
+  grid-row: 1 / 2;
+}
+
+//Resultados Busqueda
+.ordenes-resultado {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+  margin: 10px;
+}
+
+
+
+// ESTILOS
+.buscador {
+  overflow: hidden !important;
+}
+.resultados-busqueda {
+  height: 100%;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+}
+
+.example-tab-icon {
+  margin-right: 8px;
+}
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+td, th {
+  width: 25%;
+}
+.input-busqueda > * {
+  width: 100%;
+}
+.container {
+  margin-top: 20px;
+}
+.btn-add/*, .input-busqueda > **/{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  button {
+    background: var(--primario) !important;
+    color: white !important;
+  }
+}
+
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.55em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+.btn-back {
+  button {
+    color: white !important;
+    background: rgba(0, 0, 0, 0.6) !important;
+  }
+}

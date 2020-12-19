@@ -1,1 +1,84 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+:root {
+  --primario: #502f04 !important;
+  //--primario: #ff7500 !important;
+  --secundario: #ffaf0d !important;
+}
+/* Border */
+.mat-form-field-appearance-legacy .mat-form-field-legacy {
+  color: var(--secundario) !important;
+}
+.mat-form-field-appearance-outline .mat-form-field-outline {
+  color: var(--primario) !important;
+}
+
+.mat-form-field, button, th, td, .mat-select, .mat-label, .mat-option {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+::ng-deep .mat-form-field-flex > .mat-form-field-infix { padding: 0.55em 0px !important;}
+::ng-deep .mat-form-field-label-wrapper { top: -1.5em; }
+
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float .mat-form-field-label {
+    transform: translateY(-1.1em) scale(.75);
+    width: 133.33333%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+.primario {
+  background-color: var(--primario) !important;
+  color: white !important;
+}
+.secundario {
+  background-color: var(--secundario) !important;
+  color: var(--primario) !important;
+}
+
+.cargando {
+  position: fixed;
+  bottom: 40vh;
+  left: 41.5vw;
+  visibility: visible;
+  transform: scale(0.7);
+  img {
+    border-radius: 100% !important;
+  }
+}
+#subiendo {
+  width: 250px !important;
+  position: fixed;
+  bottom: 50%;
+  left: 40%;
+  visibility: visible;
+}
+
+.my-full-screen-dialog{
+  max-width: 100vw !important;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.dialog-addmenu .mat-dialog-container{
+  margin:0;
+  padding: 0;
+  background-color:#eeeeee;
+  overflow-x: hidden;
+}
+
+#input-file {
+  width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+

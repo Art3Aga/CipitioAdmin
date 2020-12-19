@@ -1,0 +1,61 @@
+
+
+
+<div class="container-dialog-addmenu">
+
+
+<div class="container formulario" *ngIf="menu && !cargando">
+
+<div class="img-menu text-center" [ngStyle]="styleImage" id="center"></div>
+
+
+<div class="nombre-menu" id="center">
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre del Menu</mat-label>
+    <input [(ngModel)]="menu.nombre" matInput placeholder="Menu">
+    <mat-icon matSuffix>fastfood</mat-icon>
+  </mat-form-field>
+</div>
+
+
+<div class="descripcion-menu" id="center">
+  <mat-form-field appearance="outline">
+    <mat-label>Descripcion</mat-label>
+    <textarea [(ngModel)]="menu.descripcion"  matInput placeholder="Descripcion"></textarea>
+    <mat-icon matSuffix>description</mat-icon>
+  </mat-form-field>
+</div>
+
+
+<div class="precio-menu" id="center">
+  <mat-form-field appearance="outline">
+    <mat-label>Precio</mat-label>
+    <input [(ngModel)]="menu.precio" matInput type="number" min="1" placeholder="Precio">
+    <mat-icon matSuffix>local_atm</mat-icon>
+  </mat-form-field>
+</div>
+
+<div class="tipo" id="center">
+  <mat-form-field appearance="outline">
+    <mat-label>Tipo de Comida</mat-label>
+    <mat-select [(ngModel)]="menu.tipo">
+      <mat-option value="Menu">Menu</mat-option>
+      <mat-option value="Bebida">Bebida</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+</div>
+
+<app-not-found *ngIf="!cargando && !menu"></app-not-found>
+<!--<ng-template #nodata>
+    <app-not-found></app-not-found>
+</ng-template>-->
+
+
+</div>
+
+<div class="cargando" *ngIf="cargando">
+  <img src="../assets/loading_cipitio.gif" alt="">
+</div>
+

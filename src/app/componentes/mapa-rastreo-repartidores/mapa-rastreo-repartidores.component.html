@@ -1,0 +1,39 @@
+
+
+
+
+<div class="container">
+  <button class="btn btn-danger" id="dejar-seguir" (click)="dejarSeguir()"
+  *ngIf="repartidorEnSeguimiento">
+    Dejar de Seguir
+  </button>
+  <h3 *ngIf="repartidorEnSeguimiento">Siguiendo a: {{repartidorEnSeguimiento.nombre}}</h3>
+  <div id="mapa"></div>
+  <!--<div id="menu">
+    <input id="streets-v11" type="radio" name="rtoggle" value="streets" checked="checked" (click)="changeStyleMap()" />
+    <label for="streets-v11">streets</label>
+    <input id="light-v10" type="radio" name="rtoggle" value="light" (click)="changeStyleMap()" />
+    <label for="light-v10">light</label>
+    <input id="dark-v10" type="radio" name="rtoggle" value="dark" (click)="changeStyleMap()" />
+    <label for="dark-v10">dark</label>
+    <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors" (click)="changeStyleMap()" />
+    <label for="outdoors-v11">outdoors</label>
+    <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" (click)="changeStyleMap()"/>
+    <label for="satellite-v9">satellite</label>
+  </div>-->
+  <!--<h3>Repartidores En Camino</h3><br>
+  <div class="lista-repartidores">
+    <div class="list-group">
+      <button *ngFor="let repartidor of repartidores" type="button"
+      class="list-group-item list-group-item-action" (click)="seguirRepartidor(repartidor)">
+        {{repartidor.nombre}}
+      </button>
+    </div>
+  </div>
+  <br><br>-->
+</div>
+
+<!--<div class="container text-center" *ngIf="ordenesEnCamino.length <= 0">
+  <h1>¡No hay Repartidores En Camino!</h1>
+</div>-->
+
