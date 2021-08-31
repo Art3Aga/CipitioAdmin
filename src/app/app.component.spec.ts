@@ -1,5 +1,5 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFireModule } from '@angular/fire';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
@@ -10,10 +10,16 @@ describe('AppComponent', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule, MatSnackBarModule, MatBottomSheetModule, MatDialogModule
-      ],
-      providers: [
-        AngularFirestore
+        RouterTestingModule, MatSnackBarModule, MatBottomSheetModule, MatDialogModule,
+        AngularFireModule.initializeApp({
+          apiKey: "AIzaSyDs4BS8Zg86Uc2w6VBmTlH8Y_KGQ1x4lA8",
+          authDomain: "deliveryproject-3d999.firebaseapp.com",
+          databaseURL: "https://deliveryproject-3d999.firebaseio.com",
+          projectId: "deliveryproject-3d999",
+          storageBucket: "deliveryproject-3d999.appspot.com",
+          messagingSenderId: "449498209696",
+          appId: "1:449498209696:web:a997f1e75ce4703e1a98c5"
+        })
       ],
       declarations: [
         AppComponent

@@ -13,7 +13,11 @@ describe('UsuarioGuardGuard', () => {
     guard = TestBed.inject(UsuarioGuard);
   });
 
-  it('should be created', () => {
+  /*it('should be created', () => {
     expect(guard).toBeTruthy();
+  });*/
+
+  test('validar si existe usuario logueado', () => {
+    expect(guard.canActivate).toBeTruthy();
   });
 });

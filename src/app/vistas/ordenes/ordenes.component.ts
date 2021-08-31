@@ -24,7 +24,7 @@ export class OrdenesComponent implements OnInit {
 
   ngOnInit(): void {
     this.getOrdenes();
-    console.log(new Date().valueOf());
+    //console.log(new Date().valueOf());
 
   }
 
@@ -42,6 +42,10 @@ export class OrdenesComponent implements OnInit {
         this.ordenesEntregadas = this.ordenes.filter(orden => orden.estado == 'Entregado');
         this.ordenesNoEntregadas = this.ordenes.filter(orden => orden.estado == 'No Entregado');
         //ordenes.forEach(orden =>  console.log(new Date(orden.fecha).valueOf()));
+        console.log(this.ordenes);
+        console.log("OLIIIIIIIIIIIIII");
+
+
       },
       error => console.log(error)
     );

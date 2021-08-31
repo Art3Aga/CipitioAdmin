@@ -3,23 +3,20 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { AngularFireModule } from '@angular/fire';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
-import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatTableModule } from '@angular/material/table';
 import { RouterTestingModule } from '@angular/router/testing';
-//import { environment } from 'src/environments/environment';
-import { BebidasComponent } from './bebidas.component';
 
+import { OrdenesComponent } from './ordenes.component';
 
-describe('BebidasComponent', () => {
-  let component: BebidasComponent;
-  let fixture: ComponentFixture<BebidasComponent>;
+describe('OrdenesComponent', () => {
+  let component: OrdenesComponent;
+  let fixture: ComponentFixture<OrdenesComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ BebidasComponent ],
-      imports: [ MatMenuModule, MatTableModule, MatSnackBarModule, MatBottomSheetModule,
-        MatDialogModule, RouterTestingModule, AngularFireModule.initializeApp({
+      declarations: [ OrdenesComponent ],
+      imports: [ MatSnackBarModule, MatBottomSheetModule, MatDialogModule, RouterTestingModule,
+        AngularFireModule.initializeApp({
           apiKey: "AIzaSyDs4BS8Zg86Uc2w6VBmTlH8Y_KGQ1x4lA8",
           authDomain: "deliveryproject-3d999.firebaseapp.com",
           databaseURL: "https://deliveryproject-3d999.firebaseio.com",
@@ -30,17 +27,30 @@ describe('BebidasComponent', () => {
         })
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BebidasComponent);
+    fixture = TestBed.createComponent(OrdenesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  /*it('should create', () => {
     expect(component).toBeTruthy();
+  });*/
+
+  test('verificar que se obtengan las ordenes de firebase', () => {
+
+    //const getOrdenes = spyOn(component.getOrdenes(), "");
+    expect(component.cargando).toBeTruthy();
+    expect(component.ordenes.length).toEqual(0);
+    //expect().toHaveBeenCalled(getOrdenes);
+    //console.log(component.ordenes);
+    //expect(component.ordenes.length).toBeGreaterThan(0);
+    /*component.ordenController.Ordenes().subscribe(
+      (response) => expect(response).not.toBeNull(),
+      (error) => fail(error)
+    );*/
   });
 });

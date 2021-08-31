@@ -7,9 +7,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { RouterTestingModule } from '@angular/router/testing';
-//import { environment } from 'src/environments/environment';
-import { BebidasComponent } from './bebidas.component';
 
+import { BebidasComponent } from './bebidas.component';
 
 describe('BebidasComponent', () => {
   let component: BebidasComponent;
@@ -18,8 +17,8 @@ describe('BebidasComponent', () => {
   beforeEach(async () => {
     TestBed.configureTestingModule({
       declarations: [ BebidasComponent ],
-      imports: [ MatMenuModule, MatTableModule, MatSnackBarModule, MatBottomSheetModule,
-        MatDialogModule, RouterTestingModule, AngularFireModule.initializeApp({
+      imports: [ MatMenuModule, MatTableModule, RouterTestingModule, MatSnackBarModule, MatBottomSheetModule,
+       MatDialogModule, AngularFireModule.initializeApp({
           apiKey: "AIzaSyDs4BS8Zg86Uc2w6VBmTlH8Y_KGQ1x4lA8",
           authDomain: "deliveryproject-3d999.firebaseapp.com",
           databaseURL: "https://deliveryproject-3d999.firebaseio.com",
@@ -30,8 +29,7 @@ describe('BebidasComponent', () => {
         })
       ],
       schemas: [ NO_ERRORS_SCHEMA ]
-    })
-    .compileComponents();
+    }).compileComponents();
   });
 
   beforeEach(() => {
@@ -40,7 +38,10 @@ describe('BebidasComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  test('verificar si se obtienen las bebidas', () => {
+    let spyCargarBebidas = jest.spyOn(component, 'cargarBebidas');
+    //expect(component.cargarBebidas()).toHaveBeenCalled();
+    //console.log(component.bebidas.length);
+
   });
 });
