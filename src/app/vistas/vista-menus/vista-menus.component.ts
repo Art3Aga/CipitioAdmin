@@ -4,22 +4,25 @@ import { MenuController } from './../../controladores/menu-controller.service';
 import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Menu } from './../../modelos/menus';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
+import { OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-vista-menus',
   templateUrl: './vista-menus.component.html',
   styleUrls: ['./vista-menus.component.scss']
 })
-export class VistaMenusComponent implements OnInit {
+export class VistaMenusComponent implements OnInit, AfterViewInit, OnDestroy {
 
   displayedColumns: string[] = ['id_menu', 'nombre', 'descripcion', 'precio', 'accion'];
   dataSourceMenus: MatTableDataSource<Menu>;
   dataSourceBebidas: MatTableDataSource<Menu>;
   menus: Menu[] = [];
-  //bebidas: Menu[] = [];
+  subscriptionMenu$: Subscription;
   cargando: boolean = false;
+  errorMenus: any;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sortMenus: MatSort;
@@ -29,23 +32,26 @@ export class VistaMenusComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.cargarMenus();
+    this.getMenus();
   }
 
-  cargarMenus() {
+  ngOnDestroy(): void {
+    this.subscriptionMenu$.unsubscribe();
+  }
+
+  getMenus() {
     this.cargando = true;
-    this.menuController.Menus().subscribe(
+    this.subscriptionMenu$ = this.menuController.Menus().subscribe(
       menus => {
 
         this.menus = menus.filter(menu => menu.tipo == 'Menu');
-        //this.bebidas = menus.filter(menu => menu.tipo == 'Bebida');
 
         this.dataSourceMenus = new MatTableDataSource(this.menus);
         this.dataSourceMenus.paginator = this.paginator;
         this.dataSourceMenus.sort = this.sortMenus;
         this.cargando = false;
       },
-      error => console.log(error)
+      error => this.errorMenus = error
     );
   }
 

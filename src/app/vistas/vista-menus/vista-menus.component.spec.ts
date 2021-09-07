@@ -4,21 +4,23 @@ import { AngularFireModule } from '@angular/fire';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { RouterTestingModule } from '@angular/router/testing';
 
-import { BebidasComponent } from './bebidas.component';
+import { VistaMenusComponent } from './vista-menus.component';
 
-describe('BebidasComponent', () => {
-  let component: BebidasComponent;
-  let fixture: ComponentFixture<BebidasComponent>;
+describe('VistaMenusComponent', () => {
+  let component: VistaMenusComponent;
+  let fixture: ComponentFixture<VistaMenusComponent>;
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      declarations: [ BebidasComponent ],
-      imports: [ MatMenuModule, MatTableModule, RouterTestingModule, MatSnackBarModule, MatBottomSheetModule,
-       MatDialogModule, AngularFireModule.initializeApp({
+      declarations: [ VistaMenusComponent ],
+      imports: [ 
+        MatMenuModule, MatTableModule, MatSnackBarModule, MatBottomSheetModule, MatPaginatorModule,
+        MatDialogModule, RouterTestingModule, AngularFireModule.initializeApp({
           apiKey: "AIzaSyDs4BS8Zg86Uc2w6VBmTlH8Y_KGQ1x4lA8",
           authDomain: "deliveryproject-3d999.firebaseapp.com",
           databaseURL: "https://deliveryproject-3d999.firebaseio.com",
@@ -28,20 +30,18 @@ describe('BebidasComponent', () => {
           appId: "1:449498209696:web:a997f1e75ce4703e1a98c5"
         })
       ],
-      schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ]
+      schemas: [ NO_ERRORS_SCHEMA, CUSTOM_ELEMENTS_SCHEMA ],
+      
     }).compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(BebidasComponent);
+    fixture = TestBed.createComponent(VistaMenusComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('verificar si se obtienen las bebidas', () => {
-    let spyCargarBebidas = jest.spyOn(component, 'cargarBebidas');
-    //expect(component.cargarBebidas()).toHaveBeenCalled();
-    //console.log(component.bebidas.length);
-
+  it('should create', () => {
+    expect(component).toBeTruthy();
   });
 });
